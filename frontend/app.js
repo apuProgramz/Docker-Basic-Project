@@ -22,7 +22,7 @@ app.get('/', async function(req, res) {
 	try {
 		let response = await fetch(URL, options);
 		response = await response.json();
-        res.render('inde', { users: response })
+		res.render('index', { users: response });
 	} catch (err) {
 		console.log(err);
 		res.status(500).json({msg: `Internal Server Error.`});
