@@ -15,7 +15,7 @@ collection = db['users']
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('welcome.html')
+    return render_template('index.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():

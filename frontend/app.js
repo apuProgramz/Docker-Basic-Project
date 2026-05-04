@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
-app.set('views', path.join(__dirname, '..', 'backend', 'templates'));
+app.set('views', path.join(__dirname, 'templates'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -22,7 +22,7 @@ app.get('/', async function(req, res) {
 	try {
 		let response = await fetch(URL, options);
 		response = await response.json();
-        res.render('index', response)
+        res.render('inde', { users: response })
 	} catch (err) {
 		console.log(err);
 		res.status(500).json({msg: `Internal Server Error.`});
