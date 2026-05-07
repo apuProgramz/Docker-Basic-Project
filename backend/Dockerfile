@@ -10,4 +10,4 @@ COPY . /app
 
 ENTRYPOINT ["gunicorn"]
 
-CMD ["--bind", "0.0.0.0:8000", "app:app"]
+CMD ["--bind", "0.0.0.0:5000", "app:app"]
