@@ -1,13 +1,13 @@
-FROM python:3.8-alpine
-
-ADD requirements.txt /app/requirements.txt
-
-RUN pip install -r /app/requirements.txt
-
-ADD . /app
+FROM python:3.12-slim
 
 WORKDIR /app
 
-ENTRYPOINT [ "python" ]
+COPY requirements.txt /app/requirements.txt
 
-CMD ["app.py"]
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+COPY . /app
+
+ENTRYPOINT ["gunicorn"]
+
+CMD ["--bind", "0.0.0.0:8000", "app:app"]

@@ -5,6 +5,9 @@ services:
   backend:
     build: backend
     hostname: backend-host
+    environment:
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY:-change-me-in-env}
+      - MONGODB_URI=${MONGODB_URI:-mongodb+srv://dummy:1234@apurvadb.gl0f3.mongodb.net/}
     volumes:
       - ./backend:/app
     ports:

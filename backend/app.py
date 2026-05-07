@@ -1,14 +1,15 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
 from flask_cors import CORS
 import json
+import os
 from pymongo import MongoClient
 
 app = Flask(__name__)
 CORS(app)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/' # Secret key for flashing messages
+app.secret_key = os.getenv('FLASK_SECRET_KEY', '_5#y2L"F4Q8z\\n\\xec]/')
 
 # MongoDB Atlas connection
-uri = "mongodb+srv://dummy:1234@apurvadb.gl0f3.mongodb.net/"
+uri = os.getenv('MONGODB_URI', 'mongodb+srv://dummy:1234@apurvadb.gl0f3.mongodb.net/')
 client = MongoClient(uri)
 db = client['ApurvaDB']
 collection = db['users']
